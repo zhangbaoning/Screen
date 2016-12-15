@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Screen.iml" filepath="$PROJECT_DIR$/Screen.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Calendar/Calendar.iml" filepath="$PROJECT_DIR$/Calendar/Calendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CatchFish/CatchFish.iml" filepath="$PROJECT_DIR$/CatchFish/CatchFish.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Star/Star.iml" filepath="$PROJECT_DIR$/Star/Star.iml" />
     </modules>
   </component>
 </project>
