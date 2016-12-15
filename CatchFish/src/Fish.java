@@ -12,28 +12,29 @@ public class Fish {
     BufferedImage images[];
     int x, y;
     int width, height;
-    int step;
+    int step = 2;
     int index;
     Random r = new Random();
 
     public Fish(String name) {
-        System.out.println(name);
+
         images = new BufferedImage[10];
         for (int i = 0; i < images.length; i++) {
             try {
                 images[i] = ImageIO.read(new File("C:\\Users\\zhangbaoning\\IdeaProjects\\Screen\\CatchFish\\pic\\" + name + ".png"));
+                image = images[i];
+                width = image.getWidth();
+                height = image.getHeight();
+                x = r.nextInt(700) + width / 2;
+                y = r.nextInt(500) + height / 2;
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            image = images[0];
-            width = image.getWidth();
-            height = image.getHeight();
-            x = r.nextInt(700) + width / 2;
-            y = r.nextInt(500) + height / 2;
 
         }
     }
 
+    //动画
     public void move() {
         image = images[index++ % images.length];
         x -= step;

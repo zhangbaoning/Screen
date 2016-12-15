@@ -30,12 +30,13 @@ public class Net extends JPanel {
     @Override
     public void paint(Graphics g) {
         g.drawImage(image, x, y, null);
+        System.out.println(x + " " + y);
     }
 
     //渔网随着鼠标移动
     public void moved(int x, int y) {
         this.x = x;
-        this.x = y;
+        this.y = y;
     }
 
     boolean catchFish(Fish fish) {

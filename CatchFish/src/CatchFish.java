@@ -19,7 +19,8 @@ public class CatchFish extends JPanel {
     public CatchFish() {
         try {
             background = ImageIO.read(new File("C:\\Users\\zhangbaoning\\IdeaProjects\\Screen\\CatchFish\\pic\\bg.jpg"));
-            net = new Net();    //初始化鱼
+            net = new Net();
+            //初始化鱼
             fishs = new Fish[9];
             for (int i = 1; i <= fishs.length; i++) {
                 fishs[i - 1] = new Fish("fish0" + i + "_0" + i);
@@ -31,9 +32,9 @@ public class CatchFish extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        g.drawImage(background, 0, 0, null);
+        g.drawImage(background, 0, 0, null);    //画上背景
         if (net.show) {
-            g.drawImage(net.image, net.x - net.width / 2, net.y - net.height / 2, null);
+            net.paint(g);
             for (int i = 0; i < fishs.length; i++) {
                 Fish fish = fishs[i];
                 g.drawImage(fish.image, fish.x - fish.width / 2, fish.y - fish.height / 2, null);
@@ -66,7 +67,9 @@ public class CatchFish extends JPanel {
                 //通过MouseEvent对象获取鼠标位置
                 int x = e.getX();
                 int y = e.getY();
-                net.moved(x, y);//渔网定义移动方法
+                System.out.println(" y" + y);
+                //得到的鼠标位置要减去图片的宽和高的一半，进行鼠标到网的中心进行修正
+                net.moved(x - net.image.getWidth() / 2, y - net.image.getHeight() / 2);//渔网定义移动方法
             }
 
             //当鼠标按下可以捕鱼
@@ -97,6 +100,7 @@ public class CatchFish extends JPanel {
             }
             //数据更改后，及时更新界面
             repaint();
+            net.repaint();
         }
     }
 
@@ -105,8 +109,11 @@ public class CatchFish extends JPanel {
         for (int i = 0; i < fishs.length; i++) {
             Fish f = fishs[i];
             //捕到鱼
-            f.getOut();
-            score += f.width / 2;
+            if (net.catchFish(f)) {
+                f.getOut();
+                score += f.width / 2;
+            }
+
 
 
         }
